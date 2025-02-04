@@ -7,16 +7,16 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/mschw380/Documents/GitHub/Software-Testing-Asg2/Packages/jfreechart.jar"/>
-	<classpathentry kind="lib" path="C:/Users/mschw380/Documents/GitHub/Software-Testing-Asg2/Packages/lib/bsh-core-2.0b4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/mschw380/Documents/GitHub/Software-Testing-Asg2/Packages/lib/cglib-2.1_3-src.jar"/>
-	<classpathentry kind="lib" path="C:/Users/mschw380/Documents/GitHub/Software-Testing-Asg2/Packages/lib/cglib-nodep-2.1_3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/mschw380/Documents/GitHub/Software-Testing-Asg2/Packages/lib/gnujaxp.jar"/>
-	<classpathentry kind="lib" path="C:/Users/mschw380/Documents/GitHub/Software-Testing-Asg2/Packages/lib/jcommon-1.0.0-rc1-cvs.jar"/>
-	<classpathentry kind="lib" path="C:/Users/mschw380/Documents/GitHub/Software-Testing-Asg2/Packages/lib/jcommon-1.0.5.jar"/>
-	<classpathentry kind="lib" path="C:/Users/mschw380/Documents/GitHub/Software-Testing-Asg2/Packages/lib/objenesis-1.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/mschw380/Documents/GitHub/Software-Testing-Asg2/Packages/lib/servlet.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
-	<classpathentry kind="lib" path="C:/Users/mschw380/Documents/GitHub/Software-Testing-Asg2/Packages/mockito-all-2.0.2-beta.jar"/>
+	<classpathentry kind="lib" path="Packages/lib/bsh-core-2.0b4.jar"/>
+	<classpathentry kind="lib" path="Packages/lib/cglib-2.1_3-src.jar"/>
+	<classpathentry kind="lib" path="Packages/lib/cglib-nodep-2.1_3.jar"/>
+	<classpathentry kind="lib" path="Packages/lib/gnujaxp.jar"/>
+	<classpathentry kind="lib" path="Packages/lib/jcommon-1.0.0-rc1-cvs.jar"/>
+	<classpathentry kind="lib" path="Packages/lib/jcommon-1.0.5.jar"/>
+	<classpathentry kind="lib" path="Packages/lib/objenesis-1.0.jar"/>
+	<classpathentry kind="lib" path="Packages/lib/servlet.jar"/>
+	<classpathentry kind="lib" path="Packages/jfreechart.jar"/>
+	<classpathentry kind="lib" path="Packages/mockito-all-2.0.2-beta.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
