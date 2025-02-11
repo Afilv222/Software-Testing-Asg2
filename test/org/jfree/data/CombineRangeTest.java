@@ -3,6 +3,7 @@ package org.jfree.data;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
@@ -71,16 +72,59 @@ class CombineRangeTest {
 	}
 
 	@Test
-	void combine_WhenBothRangesDonOverLap() {
+	void combine_WhenBothRangesDontOverLap() {
 		Range range1 = new Range(1.0, 5.0);
 		Range range2 = new Range(7.0, 10.0);
 
 		Range actualRange = Range.combine(range1, range2);
-
-		double expectedRangeSize = actualRange.getLength();
-		Assert.assertEquals(10.0, expectedRangeSize);
+		
+		assertAll(() -> assertEquals(1.0,actualRange.getLowerBound()), 
+				  () -> assertEquals(10.0,actualRange.getUpperBound()));
+		
+		
 
 	}
+	
+	
+	@Test
+	void combine_WhenBothRangesIntersect() {
+		Range range1 = new Range(4.0, 5.0);
+		Range range2 = new Range(5.0, 7.0);
+
+		Range actualRange = Range.combine(range1, range2);
+		
+		System.out.print(actualRange);
+		
+		assertAll(() -> assertEquals(4.0,actualRange.getLowerBound()), 
+				  () -> assertEquals(7.0,actualRange.getUpperBound()));
+		
+		
+
+	}
+	
+	
+	@Test
+	void combine_WhenBothRangesOverlap() {
+		Range range1 = new Range(4.0, 7.0);
+		Range range2 = new Range(5.0, 11.0);
+
+		Range actualRange = Range.combine(range1, range2);
+		
+		System.out.print(actualRange);
+		
+		assertAll(() -> assertEquals(4.0,actualRange.getLowerBound()), 
+				  () -> assertEquals(7.0,actualRange.getUpperBound()));
+		
+		
+
+	}
+	
+	
+	
+	
+	
+	
+	
 
 	@Test
 	void test() {
