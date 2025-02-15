@@ -1,5 +1,6 @@
 package org.jfree.data;
 
+import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.Assert;
@@ -23,13 +24,24 @@ class ExpandToInclude {
 	//	Expanding below positive and negative range
 	@ParameterizedTest
 	@CsvFileSource(resources = "/CSVData/expandtoincludedata.csv", numLinesToSkip = 1)
-	void CSVFileValidTest(double lowerBound, double upperBound, double eLowerBound, double eUpperBound, double value) throws Exception {
+	void expandToIncludeCSVFileValidTest(double lowerBound, double upperBound, double eLowerBound, double eUpperBound, double value) throws Exception {
 
 		Range range = new Range(lowerBound, upperBound);
 		Range actual = Range.expandToInclude(range, value);
 		Range expected = new Range(eLowerBound, eUpperBound);
 
-		assertEquals(actual, expected);
+		assertEquals(expected, actual);
 	}
+	
+	@Test
+	void expandToIncludeNullTest() throws Exception {
+
+		Range range = null;
+		Range actual = Range.expandToInclude(range, 11);
+		Range expected = new Range(11, 11);
+
+		assertEquals(expected, actual);
+	}
+
 
 }
