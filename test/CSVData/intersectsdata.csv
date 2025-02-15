@@ -1,0 +1,10 @@
+﻿lowerBound,upperBound,iLowerbound,iUpperbound,expectedResult
+2,3,1,6,TRUE
+-8,-6,-10,-5,TRUE
+1,6,3,5,TRUE
+3,5,1,6,TRUE
+4,8,4,6,TRUE
+0,3,3,6,TRUE
+-1,0,0,1,TRUE
+2,4,3,4,TRUE
+3,5,7,10,FALSE

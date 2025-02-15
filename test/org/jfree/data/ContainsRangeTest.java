@@ -15,13 +15,7 @@ class ContainsRangeTest {
 	}
 
 	@Test
-	void eisNull() throws Exception {
-
-//		Range range69 = new Range(-3.0, 5.0);
-//
-//		System.out.println(range69);
-//		System.out.println(range69.getUpperBound());
-//		System.out.println(range69.getLowerBound());
+	void Testing_RangeConstructor() throws Exception {
 
 		assertThrows(Exception.class, () -> {
 
@@ -29,7 +23,7 @@ class ContainsRangeTest {
 
 			Range range = new Range(15.0, 9.0);
 
-			actual = range.contains(6.0);
+			actual = range.contains(0);
 
 		});
 	}
@@ -42,26 +36,28 @@ class ContainsRangeTest {
 	// Tests when value contains decimals if it's within the Range the result will
 	// be true
 
+	// Tests when value range contains decimals and is very small but the value is
+	// still found, the result will be true
+
 	// Tests when value contains decimals if it's not within the Range the result
 	// will be false
 
 	// Tests when both upper and lower bonds are negatives and value is not within
 	// the range the result will be false
 
+	// Tests when value is negative and below the negative lower boundary result
+	// should be false
 	//
 	@ParameterizedTest
 	@CsvFileSource(resources = "/CSVData/containsdata.csv", numLinesToSkip = 1)
-	void ContainsRangeCSVFileTest(double lowerBound, double upperBound, double value) throws Exception {
+	void ContainsRangeCSVFileTest(double lowerBound, double upperBound, double value, boolean expectedResult)
+			throws Exception {
 
 		Range range = new Range(lowerBound, upperBound);
 
-		boolean valueWithInRange = range.contains(value);
+		boolean actualResult = range.contains(value);
 
-		if (valueWithInRange) {
-			Assert.assertTrue(valueWithInRange);
-		} else {
-			Assert.assertFalse(valueWithInRange);
-		}
+		Assert.assertEquals(expectedResult, actualResult);
 
 	}
 
