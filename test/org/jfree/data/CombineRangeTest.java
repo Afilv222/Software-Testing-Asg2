@@ -81,8 +81,8 @@ class CombineRangeTest {
 	// negative values
 	@ParameterizedTest
 	@CsvFileSource(resources = "/CSVData/combinedata.csv", numLinesToSkip = 1)
-	void CSVFileValidTest(double r1Lower, double r1Upper, double r2Lower, double r2Upper, double eLower, double eUpper)
-			throws Exception {
+	void CombineRangeCSVFileTest(double r1Lower, double r1Upper, double r2Lower, double r2Upper, double eLower,
+			double eUpper) throws Exception {
 
 		Range range1 = new Range(r1Lower, r1Upper);
 		Range range2 = new Range(r2Lower, r2Upper);

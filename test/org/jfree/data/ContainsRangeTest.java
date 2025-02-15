@@ -51,7 +51,7 @@ class ContainsRangeTest {
 	//
 	@ParameterizedTest
 	@CsvFileSource(resources = "/CSVData/containsdata.csv", numLinesToSkip = 1)
-	void CSVFileValidTest(double lowerBound, double upperBound, double value) throws Exception {
+	void ContainsRangeCSVFileTest(double lowerBound, double upperBound, double value) throws Exception {
 
 		Range range = new Range(lowerBound, upperBound);
 

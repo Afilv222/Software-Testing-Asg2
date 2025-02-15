@@ -42,7 +42,8 @@ class ConstrainRangeTest {
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/CSVData/constraindata.csv", numLinesToSkip = 1)
-	void CSVFileValidTest(double lowerBound, double upperBound, double value, double expected) throws Exception {
+	void ConstrainRangeCSVFileTest(double lowerBound, double upperBound, double value, double expected)
+			throws Exception {
 
 		Range range1 = new Range(lowerBound, upperBound);
 
