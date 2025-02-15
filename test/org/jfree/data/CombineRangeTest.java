@@ -60,6 +60,29 @@ class CombineRangeTest {
 
 	}
 
+	@Test
+	void testCombine() {
+
+		Range range1 = new Range(-5.0, 5.0); // [0,5]
+		Range range2 = new Range(-4.0, 6.0); // [1,6]
+
+		System.out.println(range1);
+		System.out.println(range1.getLowerBound());
+		System.out.println(range1.getUpperBound());
+		System.out.println(range2);
+		System.out.println(range2.getLowerBound());
+		System.out.println(range2.getUpperBound());
+
+		double eLower = 0.0;
+		double eUpper = 6.0;
+
+		Range actualRange = Range.combine(range1, range2);
+
+		assertAll(() -> assertEquals(eLower, actualRange.getLowerBound()),
+				() -> assertEquals(eUpper, actualRange.getUpperBound()));
+
+	}
+
 	// Test all valid combine ranges
 	// Tests When Both Ranges Dont OverLap
 	// Tests when both ranges touch at single point
