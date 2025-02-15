@@ -3,11 +3,12 @@ package org.jfree.data;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 
 class CombineRangeTest {
 
@@ -25,26 +26,14 @@ class CombineRangeTest {
 
 		Range actual = Range.combine(range1, range2);
 
-		Assert.assertEquals(expected, actual);
+		Assert.assertNull(actual);
+
+		// Assert.assertEquals(expected, actual);
 
 	}
 
 	@Test
-	void combineRange_whenR1Null_returnR2Value() {
-		Range range1 = new Range(1.0, 5.0);
-		Range range2 = null;
-
-		Range actualRange = Range.combine(range1, range2);
-
-		double higher = actualRange.getUpperBound();
-		double lower = actualRange.getLowerBound();
-
-		assertAll(() -> assertEquals(1.0, higher, 0.1), () -> assertEquals(1.0, higher, 0.1));
-
-	}
-
-	@Test
-	void combine_WhenSeceondRangeIsNull_ReturnsOtherRange() {
+	void combine_WhenFirstRangeIsNull_ReturnsSecondRange() {
 
 		Range range1 = null;
 		Range range2 = new Range(3.0, 5.0);
@@ -58,73 +47,40 @@ class CombineRangeTest {
 	}
 
 	@Test
-	void combine_WhenFirstRangeIsNull_ReturnsOtherRange() {
+	void combine_WhenSecondRangeIsNull_ReturnsFirstRange() {
 
 		Range range1 = new Range(1.0, 5.0);
 		Range range2 = null;
 
 		Range expectedRange = range1;
 
-		Range actualRange = Range.combine(range2, range1);
+		Range actualRange = Range.combine(range1, range2);
 
 		Assert.assertEquals(expectedRange, actualRange);
 
 	}
 
-	@Test
-	void combine_WhenBothRangesDontOverLap() {
-		Range range1 = new Range(1.0, 5.0);
-		Range range2 = new Range(7.0, 10.0);
+	// Test all valid combine ranges
+	// Tests When Both Ranges Dont OverLap
+	// Tests when both ranges touch at single point
+	// Tests when WhenBothRangesOverlap
+	// Tests when one range is within the other range
+	// Tests again when one range is within the other range but reversed
+	// Tests when both ranges are equal to each other
+
+	@ParameterizedTest
+	@CsvFileSource(resources = "/CSVData/combinedata.csv", numLinesToSkip = 1)
+	void CSVFileValidTest(double r1Lower, double r1Upper, double r2Lower, double r2Upper, double eLower, double eUpper)
+			throws Exception {
+
+		Range range1 = new Range(r1Lower, r1Upper);
+		Range range2 = new Range(r2Lower, r2Upper);
 
 		Range actualRange = Range.combine(range1, range2);
-		
-		assertAll(() -> assertEquals(1.0,actualRange.getLowerBound()), 
-				  () -> assertEquals(10.0,actualRange.getUpperBound()));
-		
-		
 
+		assertAll(() -> assertEquals(eLower, actualRange.getLowerBound()),
+				() -> assertEquals(eUpper, actualRange.getUpperBound()));
 	}
-	
-	
-	@Test
-	void combine_WhenBothRangesIntersect() {
-		Range range1 = new Range(4.0, 5.0);
-		Range range2 = new Range(5.0, 7.0);
-
-		Range actualRange = Range.combine(range1, range2);
-		
-		System.out.print(actualRange);
-		
-		assertAll(() -> assertEquals(4.0,actualRange.getLowerBound()), 
-				  () -> assertEquals(7.0,actualRange.getUpperBound()));
-		
-		
-
-	}
-	
-	
-	@Test
-	void combine_WhenBothRangesOverlap() {
-		Range range1 = new Range(4.0, 7.0);
-		Range range2 = new Range(5.0, 11.0);
-
-		Range actualRange = Range.combine(range1, range2);
-		
-		System.out.print(actualRange);
-		
-		assertAll(() -> assertEquals(4.0,actualRange.getLowerBound()), 
-				  () -> assertEquals(7.0,actualRange.getUpperBound()));
-		
-		
-
-	}
-	
-	
-	
-	
-	
-	
-	
 
 	@Test
 	void test() {
