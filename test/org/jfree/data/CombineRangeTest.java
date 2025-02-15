@@ -60,37 +60,25 @@ class CombineRangeTest {
 
 	}
 
-	@Test
-	void testCombine() {
-
-		Range range1 = new Range(-5.0, 5.0); // [0,5]
-		Range range2 = new Range(-4.0, 6.0); // [1,6]
-
-		System.out.println(range1);
-		System.out.println(range1.getLowerBound());
-		System.out.println(range1.getUpperBound());
-		System.out.println(range2);
-		System.out.println(range2.getLowerBound());
-		System.out.println(range2.getUpperBound());
-
-		double eLower = 0.0;
-		double eUpper = 6.0;
-
-		Range actualRange = Range.combine(range1, range2);
-
-		assertAll(() -> assertEquals(eLower, actualRange.getLowerBound()),
-				() -> assertEquals(eUpper, actualRange.getUpperBound()));
-
-	}
-
-	// Test all valid combine ranges
-	// Tests When Both Ranges Dont OverLap
-	// Tests when both ranges touch at single point
-	// Tests when WhenBothRangesOverlap
-	// Tests when one range is within the other range
-	// Tests again when one range is within the other range but reversed
-	// Tests when both ranges are equal to each other
-
+	// Test all valid combine conditions
+	// Tests When both Ranges Dont OverLap
+	// Tests when both Ranges touch at single point
+	// Tests when both Ranges Overlap
+	// Tests when one Range is within the other range
+	// Tests again when one Range is within the other Range but reversed
+	// Tests when both Ranges are equal to each other
+	// Tests when Ranges contain negatives and overlapping
+	// Tests when Ranges contain negative don't overlap
+	// Tests when Ranges contain negative and touch at single point
+	// Tests when Ranges contain all negative values
+	// Tests when Ranges contain all negative values and touch at single point
+	// Tests when Ranges have large endpoints, large negative and large positive on
+	// both ends
+	// Tests when Ranges contain decimal values and are overlapping
+	// Tests when Ranges touch at exactly zero
+	// Tests when Ranges are overlapping,contains zero and decimal values
+	// Tests when Ranges are overlapping,contains zero,decimal values and contains
+	// negative values
 	@ParameterizedTest
 	@CsvFileSource(resources = "/CSVData/combinedata.csv", numLinesToSkip = 1)
 	void CSVFileValidTest(double r1Lower, double r1Upper, double r2Lower, double r2Upper, double eLower, double eUpper)
