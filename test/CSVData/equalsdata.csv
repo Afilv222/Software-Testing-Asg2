@@ -1,0 +1,12 @@
+lower1,upper1,lower2,upper2,expected
+-1,1,-1,1,TRUE
+0,5,0,5,TRUE
+-5,5,-5,6,FALSE
+-10,-5,-10,-5,TRUE
+0,0,0,0,TRUE
+-3,3,-3,4,FALSE
+5,15,5,10,FALSE
+-100,100,-100,100,TRUE
+-1,1,1,1,FALSE
+0,0,-1,1,FALSE
+-10,10,-9,9,FALSE
