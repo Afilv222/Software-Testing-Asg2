@@ -1,6 +1,9 @@
 package org.jfree.data;
 
+import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.security.InvalidParameterException;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,16 +17,20 @@ class ShiftRangeTest {
 	void setUp() throws Exception {
 	}
 
+	// When base is null -> Return InvalidParameterException 
+	// Failing due to dependancy on get lower bound???
 	@Test
-	void test() {
-		fail("Not yet implemented");
+	void Base_null() {
+
+		Range base = null;
+
+		assertThrows(InvalidParameterException.class, () -> {
+			Range.shift(base, 6.0);
+		});
+
 	}
 	
-	
-	
-	
 	// proper Functionality
-	// When base is null -> Return InvalidParameterException
 	// Delta = 0
 	// Delta < 0
 	// Cross zero
@@ -39,7 +46,9 @@ class ShiftRangeTest {
 		Range base = new Range(lowerBound, upperBound);
 		Range expected = new Range(eLower, eUpper);
 
+		//System.out.println(base.getUpperBound());
 		Range actual = Range.shift(base, delta, allowZeroCrossing);
+		//System.out.println(base.getUpperBound());
 
 		Assert.assertEquals(expected, actual);
 	}

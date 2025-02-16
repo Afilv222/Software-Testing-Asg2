@@ -1,1 +1,12 @@
-﻿baseLower,baseUpper,delta,eLower,eUpper
+﻿baseLower,baseUpper,delta,eLower,eUpper,allowZeroCrossing
+0,10,1,1,11,FALSE
+-3,7,5,0,12,FALSE
+-3,7,5,2,12,TRUE
+0,10,5,5,15,FALSE
+0,10,0,0,10,FALSE
+3,10,-5,0,5,FALSE
+3,10,-5,-2,5,TRUE
+-3,7,-10,-13,0,FALSE
+-3,7,-10,-13,-3,TRUE
+-20,-5,10,-10,0,FALSE
+-20,-5,10,-10,5,TRUE
