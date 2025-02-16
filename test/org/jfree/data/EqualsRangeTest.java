@@ -48,4 +48,25 @@ class EqualsRangeTest {
 		Assert.assertFalse(actualRange);
 	}
 
+	// Tests Cases: eqaulsdata.cvs
+	// T2 - testing identical ranges (expected: true)
+	// T3 - testing identical positive upper (expected: true)
+	// T4 - testing different upper bounds (expected: false)
+	// T5 - testing identical negative ranges (expected: true)
+	// T6 - testing identical zero ranges (expected: true)
+	// T7 - testing different negative upper bounds (expected: fasle)
+	// T8 - testing different positive upper bounds (expected: false)
+	// T9 - testing negative large range lower bounds & large positive bounds (expected:treu)
+	// T10 - testing differernt negative lower bound (expected: false)
+	// T11 - testing different ranges (expected: false)
+	// T12 - testing different bounds both (expected: false)
+	@ParameterizedTest
+	@CsvFileSource(resources = "/CSVData/equalsdata.csv", numLinesToSkip = 1)
+	void testEqualsRange(double lower1, double upper1, double lower2, double upper2, boolean expected) {
+		Range range1 = new Range(lower1, upper1);
+		Range range2 = new Range(lower2, upper2);
+        
+		assertEquals(expected, range1.equals(range2), "Equality test failed.");
+    }
+
 }
