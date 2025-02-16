@@ -2,7 +2,10 @@ package org.jfree.data;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 
 class ExpandRangeTest {
 
@@ -45,5 +48,24 @@ class ExpandRangeTest {
 			() -> assertEquals(expectedUpper, actualRange.getUpperBound(), 0.1)
 		);
 	}
-
+	
+	// Tests Cases: expandrangedata.cvs
+	// T2 - testing expand of different ranges
+	// T3 - testing expand of positive equal ranges
+	// T4 - testing expand of balanced range with different ranges
+	// T5 - testing expand of uneven range with different LE & UE
+	// T6 - testing exapnd of range equally
+	// T7 - testing expand of negative/zero range with a valid range
+	// T8 - testing expand of nagative/positive large ranges
+	// T9 - testing expand of a range from negative to positive
+	// T10 - testing expand of just a decimal difference
+	@ParameterizedTest
+	@CsvFileSource(resources = "/CSVData/expandrangedata.csv", numLinesToSkip = 1)
+	void testExpandRange(double lower, double upper, double lowerExpand, double upperExpand, double expectedLower, double expectedUpper) {
+		Range range = new Range(lower, upper);
+		Range expanded = Range.expand(range, lowerExpand, upperExpand);
+		
+		assertEquals(expectedLower, expanded.getLowerBound(), "Expanded Range Lower Bound Mismatch.");
+		assertEquals(expectedUpper, expanded.getUpperBound(), "Expanded Range Upper Bound Mismatch.");
+    }
 }
