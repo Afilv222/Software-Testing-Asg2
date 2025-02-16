@@ -48,7 +48,7 @@ class EqualsRangeTest {
 		Assert.assertFalse(actualRange);
 	}
 
-	// Tests Cases: eqaulsrangedata.cvs
+	// Tests Cases: eqaulsdata.cvs
 	// T2 - testing identical ranges (expected: true)
 	// T3 - testing identical positive upper (expected: true)
 	// T4 - testing different upper bounds (expected: false)
