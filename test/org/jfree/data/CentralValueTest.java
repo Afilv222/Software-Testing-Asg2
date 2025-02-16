@@ -40,5 +40,16 @@ class CentralValueTest {
 
 	// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+	// Test: for centralvaluedata.csv
+	// Testing lower and upper equals the mid value (for all)
+	@ParameterizedTest
+	@CsvFileSource(resources = "/CSVData/centralvaluedata.csv", numLinesToSkip = 1)
+	void testCentralValue(double lower, double upper, double expectedCentral) {
+		Range range = new Range(lower, upper);
+		
+		assertEquals(expectedCentral, range.getCentralValue(), "Central Value Wong.");
+    }
+
+
 
 }
